@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:57:09 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/17 13:39:58 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/19 17:54:26 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
-	unsigned char	*strd;
-	unsigned char	*strs;
+	char	*strd;
+	char	*strs;
 
-	strd = (unsigned char *) dst;
-	strs = (unsigned char *) src;
+	strd = (char *) dst;
+	strs = (char *) src;
 	if(dst == NULL || src == NULL)
-		return (dst);
+		return (NULL);
 	if (src <= dst)
 	{
 		i = len - 1;

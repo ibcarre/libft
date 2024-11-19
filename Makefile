@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ibaaziz <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 12:23:45 by ibaaziz           #+#    #+#              #
-#    Updated: 2024/11/18 12:43:04 by ibaaziz          ###   ########.fr        #
+#    Updated: 2024/11/19 19:17:52 by ibaaziz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,12 @@ SRC = ./ft_atoi.c\
 	./ft_strchr.c\
 	./ft_tolower.c\
 	./ft_toupper.c\
+	./ft_strdup.c\
+	./ft_substr.c\
+	./ft_strjoin.c\
+	./ft_strtrim.c\
+
+
 
 OBJ = $(SRC:.c=.o)
 

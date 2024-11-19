@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 00:23:43 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/18 01:06:44 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/19 17:40:15 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	ft_atoi(const char *str)
 	res = 0;
 	while (str[i] == ' ')
 		i++;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
 	while (ft_isdigit(str[i]))
