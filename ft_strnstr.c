@@ -9,7 +9,7 @@
 /*   Updated: 2024/11/18 00:09:24 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 #include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
@@ -23,9 +23,16 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char *)haystack);
 	while (i < len && haystack[i])
 	{
-		if (ft_strncmp(&haystack[i], needle, needlen) == 0)
+		//printf("%zu \n %s\n %s\n %zu\n", i, haystack, needle, len);
+		if (ft_strncmp(&haystack[i], needle, needlen) == 0 
+			&& i + needlen <= len)
 			return ((char *)&haystack[i]);
 		i++;
 	}
 	return (NULL);
 }
+/*
+int main()
+{
+	ft_strnstr("AAAAA", "AAAAA", 5);
+}*/

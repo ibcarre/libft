@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
 
 int	isset(char c, char const *set)
 {
@@ -29,50 +29,46 @@ int	isset(char c, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	// trouver trim debut puis trim fin check si c le meme
-	size_t	trimbeg;
-	size_t	trimend;
-	size_t	i;
 	char	*dst;
-
-	i = 0;
-	while (isset(s1[i], set) && s1[i])
-		i++;
-	if (i == ft_strlen(s1))
+	size_t	trimbeg;
+	size_t	i;
+	size_t	trimend;
+	
+	if (!isset(s1[0], set) && !isset(s1[ft_strlen(s1) - 1], set))
+		return (dst = ft_strdup(s1));
+	trimbeg = 0;
+	while (s1[trimbeg] && isset(s1[trimbeg], set))
+		trimbeg++;
+	if (trimbeg == ft_strlen(s1))
 	{
-		dst = malloc(ft_strlen(s1) + 1 * sizeof(char));
+		dst = malloc(1);
+		dst[0] = '\0';
 		return (dst);
 	}
-	trimbeg = i;
-	printf("trimbeg %zu\n", trimbeg);
-	i = ft_strlen(s1) - 1;
-	while (isset(s1[i], set) && i >= 0)
-		i--;
-	trimend = i;
-	if (trimbeg == trimend)
-		trimend = ft_strlen(s1);
-	printf("trimend %zu\n", trimend);
-	dst = malloc(((trimend - trimbeg) + 1) * sizeof(char));
+	trimend = ft_strlen(s1) - 1;
+	while(trimend >= trimbeg && isset(s1[trimend], set))
+		trimend--;
+	if (trimend == trimbeg)
+		trimend = ft_strlen(s1) - 1;
+	dst = malloc(trimend - trimbeg + 1);
 	if (!dst)
 		return (NULL);
 	i = 0;
 	while (trimbeg <= trimend)
 	{
 		dst[i] = s1[trimbeg];
-		i++;
 		trimbeg++;
+		i++;
+		//printf("I %zu\n", i);
 	}
-	printf("trimbeg %zu\n", trimbeg);
-	dst[i] = '\0';
+	dst[trimbeg] = 0;
 	return (dst);
 }
-
 /*
 int main()
 {
-	printf("%s", ft_strtrim("    hel  lo    ", " o"));
+	#include <stdio.h>
+	char *s = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
+	char *set = " \n\t";
+	printf("%s\n", ft_strtrim(s, set));
 }*/
-//3
-//9
-//    hello
-//0123456789

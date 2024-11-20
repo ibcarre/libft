@@ -3,43 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ibaaziz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:57:09 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/19 17:54:26 by ibaaziz          ###   ########.fr       */
+/*   Created: 2024/11/20 12:06:29 by ibaaziz           #+#    #+#             */
+/*   Updated: 2024/11/20 12:34:29 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	char	*strd;
-	char	*strs;
+	int		i;
+	char	*dst;
+	char	*srcc;
 
-	strd = (char *) dst;
-	strs = (char *) src;
-	if(dst == NULL || src == NULL)
+	if (!src && !dest)
 		return (NULL);
-	if (src <= dst)
+	dst = (char *) dest;
+	srcc = (char *) src;
+	i = 0;
+	if (src < dest)
 	{
-		i = len - 1;
-		while (i > 0)
+		i = (int)n - 1;
+		while (i >= 0)
 		{
-			strd[i] = strs[i];
+			dst[i] = srcc[i];
 			i--;
 		}
-		strd[i] = strs[i];
-		return (dst);
+		return (dest);
 	}
-	i = 0;
-	while (i < len)
+	while (i < n)
 	{
-		strd[i] = strs[i];
+		dst[i] = srcc[i];
 		i++;
 	}
-	return (dst);
+	return (dest);
 }
 
-
+/*
+int main()
+{
+	printf("TEST\n");
+	char *str = "thanks to @apellicc for this test !\r\n";
+	char dst[100];
+	//printf("%s\n", (char *)memmove(dst, str, 37));
+	printf("TEST\n");
+	printf("%s\n", (char *)ft_memmove("", "" - 1, 0));
+}*/
