@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibaaziz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:21:35 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/20 16:21:40 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:50:01 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,58 +31,66 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
-char	*ft_strndup(const char *s1, int n, char *dst)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (dst);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	int	count;
 	char	**str;
 	int	i;
 	int	j;
+	int	chars;
 
 	count = count_words(s, c);
 	str = malloc(count + 1 * sizeof(char));
 	if (!str)
 		return (NULL);
 	str[count] = 0;
+	printf("%i\n", count);
+	chars = 0;
 	i = 0;
 	j = 0;
-	count = 0;
+	while (s[i] == c)
+		i++;
 	while (s[i])
 	{
-		while (s[i] != c)
+		while (s[i] != c && s[i])
 		{
-			count++;
+			chars++;
 			i++;
 		}
-		printf("TEST\n");
-		if (count != 0)
-		{
-			str[j] = malloc(count + 1);
-			ft_strndup(s, count, str[j]);
-			printf("%s\n", str[j]);
-			
-		}
-		count = 0;
+		str[j] = ft_calloc(sizeof(char), chars + 1);
+		printf("lettres %s\n", str[j]);
+		if (!str[j])
+			return (NULL);
 		j++;
+		chars = 0;
+		while (s[i] == c)
+			i++;
+	}
+	i = 0;
+	j = 0;
+	chars = 0;
+	while (s[i] == c)
 		i++;
+	while (s[i])
+	{
+		while (s[i] != c && s[i])
+		{
+			printf("char %c\n", s[i]);
+			printf("CHARS %i\n", chars);
+			str[j][chars] = s[i];
+			chars++;
+			i++;
+		}
+		printf("%s\n", str[j]);
+		while (s[i] == c)
+			i++;
+		j++;
+		chars = 0;
 	}
 	return (str);
 }
 
 int main ()
 {
-	printf("%s\n", ft_split("      split       this for   me  !       ", ' ')[0]);
+	printf("%s\n", ft_split(" b o n    j    ou      r", ' ')[0]);
 }
