@@ -6,7 +6,7 @@
 #    By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 12:23:45 by ibaaziz           #+#    #+#              #
-#    Updated: 2024/11/19 19:17:52 by ibaaziz          ###   ########.fr        #
+#    Updated: 2024/11/22 18:58:41 by ibaaziz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRC = ./ft_atoi.c\
 	./ft_strjoin.c\
 	./ft_strtrim.c\
 	./ft_split.c\
-
+	./ft_putnbr_fd.c\
+	./ft_itoa.c\
 
 
 OBJ = $(SRC:.c=.o)

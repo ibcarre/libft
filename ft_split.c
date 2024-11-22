@@ -6,91 +6,103 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:21:35 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/21 21:50:01 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/22 18:53:57 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	count_words(char const *s, char c)
 {
 	size_t	i;
-	int	count;
+	int		count;
 
 	count = 0;
 	i = 1;
-	if (s[0] != c && s[i + 1] == c)
-		count++;
-	while (s[i])
+	if (s[0] != c && s[0])
 	{
-		if (s[i] == c && s[i - 1] != c)
+		count++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	while (s[i] && s[0])
+	{
+		if (s[i] != c && s[i - 1] == c)
 			count++;
 		i++;
 	}
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+void	initialize(int *i, int *j, int *chars, char *str)
 {
-	int	count;
-	char	**str;
-	int	i;
-	int	j;
-	int	chars;
+	if (str[0] == 'z')
+		*i = 0;
+	else if (str[0] == 'i')
+		*i = *i + 1;
+	if (str[1] == 'z')
+		*j = 0;
+	else if (str[1] == 'i')
+		*j = *j + 1;
+	if (str[2] == 'z')
+		*chars = 0;
+	else if (str[2] == 'i')
+		*chars = *chars + 1;
+}
 
-	count = count_words(s, c);
-	str = malloc(count + 1 * sizeof(char));
-	if (!str)
-		return (NULL);
-	str[count] = 0;
-	printf("%i\n", count);
-	chars = 0;
-	i = 0;
-	j = 0;
-	while (s[i] == c)
-		i++;
+char	**inputting(char const *s, char c, char **str)
+{
+	int		i;
+	int		j;
+	int		chars;
+
+	initialize(&i, &j, &chars, "zzz");
 	while (s[i])
 	{
+		while (s[i] == c && s[i])
+			i++;
 		while (s[i] != c && s[i])
 		{
-			chars++;
-			i++;
-		}
-		str[j] = ft_calloc(sizeof(char), chars + 1);
-		printf("lettres %s\n", str[j]);
-		if (!str[j])
-			return (NULL);
-		j++;
-		chars = 0;
-		while (s[i] == c)
-			i++;
-	}
-	i = 0;
-	j = 0;
-	chars = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i])
-	{
-		while (s[i] != c && s[i])
-		{
-			printf("char %c\n", s[i]);
-			printf("CHARS %i\n", chars);
 			str[j][chars] = s[i];
 			chars++;
 			i++;
 		}
-		printf("%s\n", str[j]);
-		while (s[i] == c)
-			i++;
-		j++;
-		chars = 0;
+		initialize(&i, &j, &chars, "siz");
 	}
 	return (str);
 }
 
-int main ()
+char	**ft_split(char const *s, char c)
 {
-	printf("%s\n", ft_split(" b o n    j    ou      r", ' ')[0]);
+	char	**str;
+	int		i;
+	int		j;
+	int		chars;
+
+	str = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!str)
+		return (NULL);
+	str[count_words(s, c)] = NULL;
+	initialize(&i, &j, &chars, "zzz");
+	while (s[i])
+	{
+		while (s[i] == c && s[i])
+			i++;
+		while (s[i] != c && s[i])
+			initialize(&i, &j, &chars, "isi");
+		if (chars > 0)
+		{
+			str[j] = ft_calloc(chars + 1, sizeof(char));
+			if (!str[j])
+				return (NULL);
+		}
+		initialize(&i, &j, &chars, "siz");
+	}
+	return (inputting(s, c, str));
 }
+
+/*
+int main()
+{
+	ft_split("      a    a ", ' ');
+}*/
