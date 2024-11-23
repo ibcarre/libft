@@ -6,7 +6,7 @@
 #    By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 12:23:45 by ibaaziz           #+#    #+#              #
-#    Updated: 2024/11/22 18:58:41 by ibaaziz          ###   ########.fr        #
+#    Updated: 2024/11/23 11:23:21 by ibaaziz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,14 +45,20 @@ SRC = ./ft_atoi.c\
 	./ft_split.c\
 	./ft_putnbr_fd.c\
 	./ft_itoa.c\
-
+	./ft_strmapi.c\
+	./ft_striteri.c\
+	./ft_putchar_fd.c\
+	./ft_putstr_fd.c\
+	./ft_putendl_fd.c\
 
 OBJ = $(SRC:.c=.o)
 
 FLAGS += -Werror -Wextra -Wall -I $(INC)
 
-all: $(OBJ)
+$(NAME): $(OBJ)
 	ar crs $(NAME) $(OBJ)
+
+all: $(NAME)
 
 clean:
 	rm -f $(OBJ)

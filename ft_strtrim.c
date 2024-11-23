@@ -30,8 +30,8 @@ int	isset(char c, char const *set)
 int	count_chars(size_t *trimbeg, char const *s1, char const *set)
 {
 	size_t	i;
-	int	count;
-	int len;
+	int		count;
+	int		len;
 
 	i = 0;
 	count = 0;
@@ -58,8 +58,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*dst;
 	size_t	trimbeg;
-	int	count;
-	int	i;
+	int		count;
+	int		i;
 
 	count = count_chars(&trimbeg, s1, set);
 	dst = ft_calloc(sizeof(char), count + 1);

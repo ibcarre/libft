@@ -23,8 +23,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char *)haystack);
 	while (i < len && haystack[i])
 	{
-		//printf("%zu \n %s\n %s\n %zu\n", i, haystack, needle, len);
-		if (ft_strncmp(&haystack[i], needle, needlen) == 0 
+		if (ft_strncmp(&haystack[i], needle, needlen) == 0
 			&& i + needlen <= len)
 			return ((char *)&haystack[i]);
 		i++;

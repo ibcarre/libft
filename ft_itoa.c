@@ -23,12 +23,12 @@ int	count_nbr(long n)
 		return (count);
 	}
 	count ++;
-	return (count + count_nbr(n/10));
+	return (count + count_nbr(n / 10));
 }
 
 void	ft_fill(char *str, long n, int sign)
 {
-	int	i;
+	int				i;
 	unsigned char	c;
 
 	i = 0;
@@ -42,10 +42,10 @@ void	ft_fill(char *str, long n, int sign)
 		}
 		else
 			str[0] = c;
-		return;
+		return ;
 	}
-	ft_fill(str, n/10, sign);
-	while(str[i])
+	ft_fill(str, n / 10, sign);
+	while (str[i])
 		i++;
 	c = n % 10 + '0';
 	str[i] = c;
@@ -53,17 +53,17 @@ void	ft_fill(char *str, long n, int sign)
 
 char	*ft_itoa(int n)
 {
-	int	count;
+	int		count;
 	long	nb;
 	char	*str;
-	int	sign;
+	int		sign;
 
 	sign = 0;
 	nb = n;
 	if (nb < 0)
 	{
 		sign = 1;
-		nb = nb * - 1;
+		nb = nb * (-1);
 	}
 	count = count_nbr(nb);
 	str = ft_calloc(count + sign + 1, sizeof(char));

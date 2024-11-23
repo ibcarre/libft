@@ -6,7 +6,7 @@
 /*   By: ibaaziz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:54:28 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/22 15:39:34 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/23 12:04:45 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long		nb;
+	long	nb;
 	char	c;
 
+	if (fd < 0)
+		return ;
 	nb = n;
 	if (n < 0)
 	{
-		nb = nb * - 1;
+		nb = nb * (-1);
 		write(fd, "-", 1);
 	}
 	if (nb < 10)
 	{
 		c = nb + '0';
 		write(fd, &c, 1);
-		return;
+		return ;
 	}
 	else
 		ft_putnbr_fd(nb / 10, fd);
