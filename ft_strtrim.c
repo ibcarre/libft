@@ -6,14 +6,13 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:18:00 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/21 19:43:34 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:45:05 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
-int	isset(char c, char const *set)
+static int	isset(char c, char const *set)
 {
 	size_t	i;
 
@@ -27,7 +26,7 @@ int	isset(char c, char const *set)
 	return (0);
 }
 
-int	count_chars(size_t *trimbeg, char const *s1, char const *set)
+static int	count_chars(size_t *trimbeg, char const *s1, char const *set)
 {
 	size_t	i;
 	int		count;

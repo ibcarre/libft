@@ -6,13 +6,13 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:21:35 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/22 18:53:57 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:44:17 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	size_t	i;
 	int		count;
@@ -34,7 +34,7 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
-void	initialize(int *i, int *j, int *chars, char *str)
+static void	initialize(int *i, int *j, int *chars, char *str)
 {
 	if (str[0] == 'z')
 		*i = 0;
@@ -50,7 +50,7 @@ void	initialize(int *i, int *j, int *chars, char *str)
 		*chars = *chars + 1;
 }
 
-char	**inputting(char const *s, char c, char **str)
+static char	**inputting(char const *s, char c, char **str)
 {
 	int		i;
 	int		j;

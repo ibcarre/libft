@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	count_nbr(long n)
+static int	count_nbr(long n)
 {
 	int	count;
 
@@ -26,7 +26,7 @@ int	count_nbr(long n)
 	return (count + count_nbr(n / 10));
 }
 
-void	ft_fill(char *str, long n, int sign)
+static void	ft_fill(char *str, long n, int sign)
 {
 	int				i;
 	unsigned char	c;
