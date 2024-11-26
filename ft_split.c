@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:21:35 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/25 13:44:17 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:45:35 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ static int	count_words(char const *s, char c)
 		i++;
 	}
 	return (count);
+}
+
+char	**freechar(char **str, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < i)
+	{
+		free(str[j]);
+		j++;
+	}
+	free(str);
+	return (NULL);
 }
 
 static void	initialize(int *i, int *j, int *chars, char *str)
@@ -94,7 +108,7 @@ char	**ft_split(char const *s, char c)
 		{
 			str[j] = ft_calloc(chars + 1, sizeof(char));
 			if (!str[j])
-				return (NULL);
+				return (freechar(str, j));
 		}
 		initialize(&i, &j, &chars, "siz");
 	}

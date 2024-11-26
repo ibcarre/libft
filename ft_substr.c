@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:36:11 by ibaaziz           #+#    #+#             */
-/*   Updated: 2024/11/19 18:47:31 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:35:03 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	i;
 
-	if (len >= ft_strlen(s) && start <= ft_strlen(s))
+	if (len > ft_strlen(s) - start && start <= ft_strlen(s))
 		sub = malloc(ft_strlen(s) - start + 1 * sizeof(char));
 	else if (start <= ft_strlen(s))
 		sub = malloc(len + 1 * sizeof(char));

@@ -33,7 +33,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 		return (dest);
 	}
-	while (i < n)
+	while ((size_t)i < n)
 	{
 		dst[i] = srcc[i];
 		i++;
