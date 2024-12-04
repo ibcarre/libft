@@ -6,7 +6,7 @@
 #    By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 12:23:45 by ibaaziz           #+#    #+#              #
-#    Updated: 2024/11/23 11:23:21 by ibaaziz          ###   ########.fr        #
+#    Updated: 2024/12/04 13:49:23 by ibaaziz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,19 @@ SRC = ./ft_atoi.c\
 	./ft_putstr_fd.c\
 	./ft_putendl_fd.c\
 
+SRC_BONUS = ./ft_lstnew.c\
+	./ft_lstadd_front.c\
+	./ft_lstlast.c\
+	./ft_lstsize.c\
+	./ft_lstadd_back.c\
+	./ft_lstdelone.c\
+	./ft_lstclear.c\
+	./ft_lstiter.c\
+	./ft_lstmap.c\
+
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 FLAGS += -Werror -Wextra -Wall -I $(INC)
 
@@ -60,11 +72,19 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+%.o:%.c
+	${CC} ${FLAG} -c $<
+
+bonus: $(OBJ_BONUS)
+	ar crs $(NAME) $(OBJ_BONUS)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
 
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re
